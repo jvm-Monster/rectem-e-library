@@ -2,6 +2,7 @@ import { Modal } from "@/app/ui_components/Modal";
 import signUpImage from "@/assets/images/signup_image.jpg";
 import React, { useState } from "react";
 import axios from "axios";
+import {baseUrl} from "@/app/api_endpoints";
 
 interface SignUpInfo {
     name?: string;
@@ -68,7 +69,7 @@ export const SignUpButton = () => {
 
         try {
             setLoading(true);
-            const response = await axios.post("http://localhost:8082/rectem/api/users", formData, {
+            const response = await axios.post(`${baseUrl}/users`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },

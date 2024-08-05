@@ -8,15 +8,8 @@ export const ProfileComponent: React.FC = () => {
 
     useEffect(() => {
         if (user && user.profilePicture) {
-            const readByteData = () => {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    setImageSrc(reader.result as string);
-                };
-                reader.readAsDataURL(new Blob([user.profilePicture]));
-            };
-
-            readByteData();
+            // Assuming user.profilePicture is already a base64 string
+            setImageSrc(`data:image/jpeg;base64,${user.profilePicture}`);
         }
     }, [user]);
 
@@ -25,11 +18,10 @@ export const ProfileComponent: React.FC = () => {
     }
 
     return (
-        <div>
-            <h1>Welcome, {user.username}</h1>
+        <div className={"flex space-x-5 items-center avatar"}>
+            <h1 className={"font-bold"}> {user.username}</h1>
+            {imageSrc && <img src={imageSrc} className={"max-w-14 max-h-20 rounded-full"} alt="Profile" />}
 
-            {imageSrc && <img src={imageSrc} alt="Profile" />}
-            <button onClick={logout}>Logout</button>
         </div>
     );
 };

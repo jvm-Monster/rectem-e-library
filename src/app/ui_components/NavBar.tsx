@@ -10,7 +10,7 @@ import ProfileComponent from "@/app/ui_components/ProfileComponent";
 export const NavBar = () => {
     const { user, logout } = useAuth();
     const  path = usePathname();
-    if(path==="/books" || path==="/admin"){
+    if(path==="/books" || path==="/admin" || path==="/books/bookmarks" || path==="/books/dashboard"){
         return (
             <div></div>
         )

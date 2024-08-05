@@ -60,14 +60,16 @@ const Admin: React.FC = () => {
                         className="input input-bordered input-md w-full"
                     />
 
-                    <input
-                        type="text"
-                        placeholder="Course"
-                        value={course}
-                        onChange={(e) => setCourse(e.target.value)}
-                        className="input input-bordered input-md w-full"
-                    />
 
+
+                    <select className="select w-full max-w-xs" onSelect={event => {setCourse(event.currentTarget.value)}}>
+                        <option disabled selected>Pick department</option>
+                        <option>Computer Sciecne</option>
+                        <option>Marge</option>
+                        <option>Bart</option>
+                        <option>Lisa</option>
+                        <option>Maggie</option>
+                    </select>
                     <textarea
                         placeholder="Book description"
                         value={description}
@@ -93,6 +95,8 @@ const Admin: React.FC = () => {
                     <div className="text-red-500">Error uploading file. Please try again.</div>
                 )}
             </div>
+
+
         </div>
     );
 };

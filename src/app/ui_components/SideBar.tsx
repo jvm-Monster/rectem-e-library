@@ -12,27 +12,35 @@ const SideBar= () => {
 
             <aside className={"bg-base-300 p-5 h-screen space-y-10 "}>
                 <div className={"flex justify-center"}><img className={"max-w-32"} src={appLogo.src}/></div>
-                <li><Link href={"/books"}
-                          className={path === "/books" ? "bg-base-content text-white btn w-full" : "btn btn-full"}>Dashboard</Link>
-                </li>
+
+                <ul className={"flex flex-col justify-between space-y-10"}>
+                    <li><Link href={"/books/dashboard"}
+                              className={path === "/books/dashboard" ? "bg-base-content text-white btn w-full px-10" : "btn btn-full w-full px-10"}>Dashboard</Link>
+                    </li>
+
+                    <li><Link href={"/books"}
+                              className={path === "/books" ? "bg-base-content text-white btn w-full px-10" : "btn btn-full px-10 w-full"}>Books</Link>
+                    </li>
 
 
-                <div>
-                    <Link href={"/"} className="btn w-full" >Home</Link>
-                </div>
+                    <li>
+                        <Link href={"/books/bookmarks"}
+                              className={path === "/books/bookmarks" ? "bg-base-content text-white btn w-full px-10" : "btn btn-full px-10"}>Bookmarks</Link>
+                    </li>
+                    <li>
+                        <Link href={"/about"} className="btn w-full px-10">About</Link>
+                    </li>
 
-                <div>
-                    <Link href={"/about"} className="btn w-full">About</Link>
-                </div>
-
-                <div>
-                    <Link href={"/support"} className="btn w-full">Support</Link>
-                </div>
+                    <li>
+                        <Link href={"/support"} className="btn w-full px-10">Support</Link>
+                    </li>
 
 
-                <div>
-                    <Link href={"/"} className="btn w-full" onClick={logout}>Logout</Link>
-                </div>
+                    <li>
+                        <Link href={"/"} className="btn w-full px-10" onClick={logout}>Logout</Link>
+                    </li>
+                </ul>
+
             </aside>
         </>
     );

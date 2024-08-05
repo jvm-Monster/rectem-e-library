@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import axios, {AxiosResponse} from 'axios';
 import { useState } from 'react';
 import {useAuth, User} from "@/app/context/AuthContext";
+import {userUrl} from "@/app/api_endpoints";
 
 const SignInButton = () => {
 
@@ -21,7 +22,7 @@ const SignInButton = () => {
 
         try {
             // Replace with your API endpoint for sign-in
-            const response:AxiosResponse<User> = await axios.post('http://localhost:8082/rectem/api/users/login', {
+            const response:AxiosResponse<User> = await axios.post( `${userUrl}/login`, {
                 username: username,
                 password: password
             });

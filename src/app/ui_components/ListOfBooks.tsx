@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios, {AxiosResponse} from "axios";
 import {BookComponent} from "@/app/ui_components/BookComponent";
 import Pdf from "@/app/interfaces/Pdf";
+import {pdfUrl} from "@/app/api_endpoints";
 
 export const ListOfBooks = () => {
     const [data, setData] = useState<Pdf[]>([]); // Initialize data state as an array of Pdf objects
@@ -10,7 +11,7 @@ export const ListOfBooks = () => {
     useEffect(() => {
         const fetchPdfsInfo = async () => {
             try {
-                const response:AxiosResponse<Pdf[]> = await axios.get<Pdf[]>("http://localhost:8082/rectem/api/pdfs/");
+                const response:AxiosResponse<Pdf[]> = await axios.get<Pdf[]>(`${pdfUrl}`);
                 setData(response.data); // Set fetched data to the state
             } catch (error) {
                 console.error("Error fetching PDFs:", error);
